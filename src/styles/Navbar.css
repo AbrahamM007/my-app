@@ -1,234 +1,147 @@
+/* Ultra-Modern Navbar with Advanced Effects */
+:root {
+  --primary: #4169e1;
+  --primary-light: #5e83ff;
+  --primary-dark: #3457c9;
+  --white: #ffffff;
+  --bg-light: rgba(248, 249, 255, 0.92);
+}
+
 .navbar {
   position: fixed;
   top: -10px;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  /* padding: 0.8rem 0; */
-  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: none;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.navbar:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(65, 105, 225, 0.2), 
+    rgba(65, 105, 225, 0.2), 
+    transparent);
+  z-index: 0;
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 0.6rem 0;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-container {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 1rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
 }
 
-/* Innovative logo design */
+.navbar-scrolled .navbar-container {
+  padding: 0.7rem 2rem;
+}
+
+/* Advanced logo styling with 3D effects and glow */
 .navbar-logo {
   position: relative;
+  perspective: 800px;
+  margin-left: -30px; /* Move logo more to the left */
 }
 
 .logo-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  text-decoration: none;
   position: relative;
-  width: auto;
-  height: auto;
-  padding: 5px;
-  border-radius: 8px;
-  background: transparent;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 2;
+  transform-style: preserve-3d;
+  left: -27px;
 }
 
 .logo-inner {
   display: flex;
   align-items: center;
-  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.navbar-logo img {
-  width: auto;
-  height: 45px;
-  transition: all 0.4s ease;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.15));
-}
-
-.logo-wrapper:hover {
-  transform: translateY(-3px);
-}
-
-.logo-wrapper:hover img {
-  transform: scale(1.05);
-  /* filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.25)); */
-}
-
-.logo-wrapper:hover {
-  transform: translateY(-3px);
-}
-
-.logo-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-logo img {
-  width: auto;
-  height: 40px;
-  transition: transform 0.4s ease;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.logo-wrapper:hover img {
-  transform: scale(1.08);
-  filter: drop-shadow(0 3px 6px rgba(37, 99, 235, 0.2));
-}
-
-.logo-wrapper:before {
-  content: '';
+.logo-glow {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 50%);
-  z-index: 1;
-}
-
-.logo-wrapper:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
-  top: 0;
-  left: 0;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle, rgba(65, 105, 225, 0.2), transparent 70%);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(10px);
 }
 
-.logo-wrapper:hover {
-  transform: translateY(-5px);
-  box-shadow: 
-    0 15px 30px rgba(37, 99, 235, 0.4),
-    0 0 0 5px rgba(37, 99, 235, 0.1);
+.navbar-logo img {
+  height: 42px;
+  width: auto;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+  transform-style: preserve-3d;
 }
 
-.logo-wrapper:hover:after {
+.logo-wrapper:hover .logo-inner {
+  transform: scale(1.1) translateZ(20px) rotateY(5deg);
+}
+
+.logo-wrapper:hover .logo-glow {
   opacity: 1;
-}
-
-.logo-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.navbar-logo img {
-  width: auto;
-  height: 30px;
-  filter: brightness(0) invert(1);
-  transition: all 0.4s ease;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1)) brightness(0) invert(1);
+  transform: scale(1.2);
 }
 
 .logo-wrapper:hover img {
-  transform: scale(1.08);
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15)) brightness(0) invert(1);
+  filter: drop-shadow(0 5px 15px rgba(65, 105, 225, 0.4));
 }
 
-.logo-wrapper:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-}
-
-.logo-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-logo img {
-  width: auto;
-  height: 54px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-
-.logo-wrapper:hover img {
-  transform: scale(1.05);
-}
-
-.logo-wrapper:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.logo-wrapper:hover {
-  transform: translateY(-5) scale(1.05);
-  box-shadow: 
-    0 15px 35px rgba(37, 99, 235, 0.4),
-    0 0 0 10px rgba(37, 99, 235, 0.1);
-}
-
-.logo-wrapper:hover:after {
-  opacity: 1;
-}
-
-.logo-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.navbar-logo img {
-  width: auto;
-  height: 40px;
-  max-width: 70px;
-  transition: transform 0.4s ease;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.logo-wrapper:hover img {
-  transform: scale(1.1);
-}
-
-/* Modern navigation menu */
+/* Advanced navigation menu with floating effects and backdrop */
 .navbar-menu {
+  display: flex;
+  align-items: center;
   position: relative;
-  background: rgba(243, 244, 246, 0.6);
-  border-radius: 16px;
-  padding: 0.4rem;
+}
+
+.menu-backdrop {
+  position: absolute;
+  top: -15px;
+  left: -20px;
+  right: -20px;
+  bottom: -15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
   box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.03),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    0 8px 32px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-menu:hover .menu-backdrop {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .navbar-nav {
@@ -236,117 +149,148 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 1.2rem;
+  position: relative;
 }
 
 .nav-item {
   position: relative;
-  margin: 0 0.2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  perspective: 800px;
+  will-change: transform;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.6rem 1.2rem;
-  color: #4b5563;
+  padding: 0.6rem 1rem;
+  color: #333;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
-  border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .nav-text {
   position: relative;
   z-index: 2;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.nav-link:before {
-  content: '';
+.nav-indicator {
   position: absolute;
   bottom: 0;
   left: 50%;
   width: 0;
   height: 2px;
-  background: #2563eb;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
   transform: translateX(-50%);
-  transition: width 0.3s ease;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
+  border-radius: 2px;
 }
 
-.nav-link:after {
+.nav-link:before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(37, 99, 235, 0.08);
-  border-radius: 12px;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.3s ease;
-  z-index: 0;
+  background: linear-gradient(135deg, rgba(65, 105, 225, 0.1), rgba(94, 131, 255, 0.1));
+  border-radius: 8px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
 }
 
 .nav-link:hover {
-  color: #2563eb;
+  color: var(--primary);
+}
+
+.nav-link:hover .nav-text {
   transform: translateY(-2px);
 }
 
 .nav-link:hover:before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-link:hover .nav-indicator {
   width: 30px;
 }
 
-.nav-link:hover:after {
-  opacity: 1;
-  transform: scale(1);
-}
-
 .nav-link.active {
-  color: white;
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+  color: var(--primary);
+  font-weight: 600;
 }
 
 .nav-link.active:before {
-  width: 0;
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
-/* Innovative action button */
+.nav-link.active .nav-indicator {
+  width: 30px;
+  height: 3px;
+}
+
+/* Ultra-modern call to action button with advanced effects */
 .navbar-actions {
   display: flex;
   align-items: center;
+  perspective: 800px;
 }
 
 .contact-btn {
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
   color: white;
   padding: 0.7rem 1.4rem;
-  border-radius: 12px;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
+  box-shadow: 
+    0 5px 15px rgba(65, 105, 225, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  transform-style: preserve-3d;
 }
 
 .btn-text {
   position: relative;
   z-index: 2;
+  margin-right: 0.5rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .btn-icon {
-  margin-left: 0.5rem;
-  transition: transform 0.3s ease;
   position: relative;
   z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 1;
+  filter: blur(10px);
 }
 
 .contact-btn:before {
@@ -356,34 +300,83 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
   z-index: 1;
 }
 
 .contact-btn:after {
   content: '';
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  top: 50%;
+  width: 30px;
+  height: 200%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    rgba(255, 255, 255, 0) 100%);
+  top: -50%;
   left: -100px;
-  transform: translateY(-50%);
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: skewX(-15deg);
+  transition: left 0.8s ease;
   z-index: 1;
 }
 
+/* Particle effects for button */
+.contact-btn .btn-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.contact-btn .btn-particles span {
+  position: absolute;
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.contact-btn .btn-particles span:nth-child(1) {
+  top: 20%;
+  left: 20%;
+}
+
+.contact-btn .btn-particles span:nth-child(2) {
+  top: 60%;
+  left: 40%;
+}
+
+.contact-btn .btn-particles span:nth-child(3) {
+  top: 40%;
+  left: 60%;
+}
+
+.contact-btn .btn-particles span:nth-child(4) {
+  top: 70%;
+  left: 80%;
+}
+
 .contact-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+  transform: translateY(-5px) translateZ(20px) rotateX(5deg);
+  box-shadow: 
+    0 12px 25px rgba(65, 105, 225, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.contact-btn:hover .btn-text {
+  transform: translateY(-2px);
 }
 
 .contact-btn:hover .btn-icon {
-  transform: translateX(3px);
+  transform: translateX(5px) scale(1.2);
 }
 
 .contact-btn:hover:before {
@@ -394,20 +387,100 @@
   left: 200%;
 }
 
-/* Mobile toggle button */
+.contact-btn:hover .btn-glow {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.contact-btn:hover .btn-particles span {
+  opacity: 1;
+}
+
+.contact-btn:hover .btn-particles span:nth-child(1) {
+  transform: translate(-20px, -20px) scale(3);
+}
+
+.contact-btn:hover .btn-particles span:nth-child(2) {
+  transform: translate(-15px, 10px) scale(2);
+}
+
+.contact-btn:hover .btn-particles span:nth-child(3) {
+  transform: translate(15px, -10px) scale(2.5);
+}
+
+.contact-btn:hover .btn-particles span:nth-child(4) {
+  transform: translate(10px, 15px) scale(2);
+}
+
+/* Enhanced mobile toggle button with advanced effects */
 .mobile-toggle {
-  display: none;
+  display: none; /* This is hiding the toggle by default */
   background: none;
   border: none;
   cursor: pointer;
-  width: 45px;
-  height: 45px;
+  width: 48px;
+  height: 48px;
   border-radius: 12px;
   background: rgba(243, 244, 246, 0.7);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   margin-left: 1rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(229, 231, 235, 0.8);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Enhanced responsive styles with advanced animations */
+@media (max-width: 992px) {
+  .navbar-container {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .navbar.scrolled .navbar-container {
+    padding: 0.6rem 1.5rem;
+  }
+  
+  /* Make the mobile toggle visible on mobile */
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .mobile-toggle.active {
+    background: rgba(65, 105, 225, 0.05);
+    box-shadow: 0 5px 20px rgba(65, 105, 225, 0.1);
+  }
+  
+  /* Rest of your mobile styles... */
+}
+
+.mobile-toggle:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(65, 105, 225, 0.1), rgba(94, 131, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.mobile-toggle:hover {
+  background: rgba(243, 244, 246, 0.9);
+  transform: translateY(-3px) translateZ(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.mobile-toggle:hover:before {
+  opacity: 1;
 }
 
 .hamburger {
@@ -415,6 +488,7 @@
   height: 16px;
   position: relative;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .hamburger span {
@@ -422,192 +496,209 @@
   position: absolute;
   height: 2px;
   width: 100%;
-  background: #2563eb;
+  background: var(--primary);
   border-radius: 2px;
   opacity: 1;
   left: 0;
   transform: rotate(0deg);
-  transition: .25s ease-in-out;
+  transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .hamburger span:nth-child(1) {
   top: 0px;
+  width: 60%;
+  transform-origin: left center;
 }
 
 .hamburger span:nth-child(2) {
   top: 7px;
+  transform-origin: left center;
 }
 
 .hamburger span:nth-child(3) {
   top: 14px;
+  width: 75%;
+  left: 25%;
+  transform-origin: left center;
+}
+
+.mobile-toggle:hover .hamburger span:nth-child(1) {
+  width: 100%;
+}
+
+.mobile-toggle:hover .hamburger span:nth-child(3) {
+  width: 100%;
+  left: 0;
 }
 
 .mobile-toggle.active span:nth-child(1) {
-  top: 7px;
-  transform: rotate(135deg);
+  transform: rotate(45deg);
+  top: 0px;
+  left: 4px;
+  width: 100%;
 }
 
 .mobile-toggle.active span:nth-child(2) {
+  width: 0%;
   opacity: 0;
 }
 
 .mobile-toggle.active span:nth-child(3) {
-  top: 7px;
-  transform: rotate(-135deg);
+  transform: rotate(-45deg);
+  top: 14px;
+  left: 4px;
+  width: 100%;
 }
 
+/* Enhanced mobile menu overlay with glass effect */
+.navbar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Enhanced responsive styles with advanced animations */
 @media (max-width: 992px) {
   .navbar-container {
-    padding: 0 1.5rem;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .navbar.scrolled .navbar-container {
+    padding: 0.6rem 1.5rem;
   }
   
   .navbar-menu {
     position: fixed;
-    top: 90px;
-    left: 5%;
-    width: 90%;
-    background: white;
-    border-radius: 16px;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 400px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 30px 0 0 30px;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    transform: translateY(-20px);
+    justify-content: center;
+    padding: 3rem 2rem;
+    box-shadow: -10px 0 50px rgba(0, 0, 0, 0.08);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+    overflow-y: auto;
+    transform-style: preserve-3d;
+    perspective: 1200px;
+    transform: translateX(0) rotateY(10deg);
     opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 999;
-    border: 1px solid rgba(229, 231, 235, 0.8);
+    display: flex; /* Ensure the menu is displayed as flex */
   }
   
   .navbar-menu.active {
-    transform: translateY(0);
+    right: 0;
     opacity: 1;
-    visibility: visible;
+    transform: translateX(0) rotateY(0);
+    visibility: visible; /* Ensure visibility when active */
   }
   
+  /* Fix for nav items not appearing */
   .navbar-nav {
     flex-direction: column;
     width: 100%;
+    gap: 1.5rem;
+    display: flex; /* Ensure nav is displayed */
+    opacity: 1; /* Ensure base opacity is visible */
   }
   
   .nav-item {
-    margin: 0.5rem 0;
+    margin: 0.3rem 0;
     width: 100%;
+    opacity: 0;
+    transform: translateX(50px) rotateY(30deg);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: blur(5px);
+    display: block; /* Ensure items are displayed */
   }
   
-  .nav-link {
-    padding: 0.8rem;
-    justify-content: center;
-  }
-  
-  .mobile-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* Ensure menu items are visible when active */
+  .navbar-menu.active .nav-item {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+    filter: blur(0);
+    pointer-events: auto; /* Ensure clickable */
   }
 }
 
 @media (max-width: 576px) {
-  .navbar-container {
-    padding: 0 1rem;
+  /* Additional fixes for smaller screens */
+  .navbar-menu {
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+    padding-top: 5rem; /* Add more space at top for better layout */
   }
   
-  .logo-wrapper {
-    width: 100px;
-    height: 50px;
-    /* margin-right: 10px; */
+  /* Ensure animation doesn't hide content */
+  @keyframes menuReveal {
+    0% {
+      clip-path: circle(0% at top right);
+    }
+    100% {
+      clip-path: circle(150% at top right);
+    }
   }
   
-  .navbar-logo img {
-    width: 52px;
-    height: 52px;
-  }
-  
-  .contact-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+  .navbar-menu.active {
+    animation: menuReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    display: flex; /* Reinforce flex display */
   }
 }
 
-/* Add these styles to your existing Navbar.css */
-
-/* Smooth transition for navbar */
-.navbar {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Add animation keyframes for extra wow factor */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
 }
 
-/* Enhanced logo animation */
-.logo-inner {
-  transition: transform 0.3s ease;
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-.logo-wrapper:hover .logo-inner {
-  transform: scale(1.05);
-}
+/* .navbar-logo {
+  animation: float 6s ease-in-out infinite;
+} */
 
-/* Improved nav link with indicator */
-.nav-link {
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-indicator {
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: currentColor;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover .nav-indicator,
-.nav-link.active .nav-indicator {
-  width: 100%;
-}
-
-/* Focus styles for accessibility */
-.nav-link:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* Enhanced mobile menu transition */
-.navbar-menu {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-}
-
-/* Enhanced button animation */
-.contact-btn {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.contact-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    rgba(255, 255, 255, 0) 0%, 
-    rgba(255, 255, 255, 0.2) 50%, 
-    rgba(255, 255, 255, 0) 100%);
-  transition: left 0.7s ease;
-}
-
-.contact-btn:hover::after {
-  left: 100%;
-}
-
-.btn-icon {
-  transition: transform 0.3s ease;
-}
-
-.contact-btn:hover .btn-icon {
-  transform: translateX(4px);
+.btn-glow {
+  animation: pulse 3s infinite;
 }

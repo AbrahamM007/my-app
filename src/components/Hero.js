@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/Hero.css';
 // IMPORTANT: Update the path below to point to your actual image file location
 import heroImage from '../assets/cleaning-professionals.jpg';
-import { FaBicycle, FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 
 const Hero = () => {
   return (
@@ -32,7 +32,7 @@ const Hero = () => {
           </div>
           
           <div className="contact-item">
-            <FaBicycle className="contact-icon" />
+            <FaPhone className="contact-icon" />
             <span className="contact-text">(+880) 2256 98755</span>
           </div>
           
